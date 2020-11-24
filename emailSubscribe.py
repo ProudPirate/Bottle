@@ -15,8 +15,8 @@ def _send_email(email_to_subscribe, email_link):
     Send confirmation link that hits the confirm_and_redirect API
 
     Args:
-        email_to_subscribe ([type]): [description]
-        email_link ([type]): [description]
+        email_to_subscribe ([string]): [user email entered in database]
+        email_link ([string]): [link for confirmation]
     """
     # Replace sender@example.com with your "From" address.
     # This address must be verified with Amazon SES.
@@ -108,11 +108,11 @@ def lambda_handler(event, context):
     If not present send confirmation link to email
 
     Args:
-        event ([type]): [description]
-        context ([type]): [description]
+        event ([dictionary]): [ ]
+        context ([__main__.LambdaContext]): [ ]
 
     Returns:
-        [type]: [description]
+        [dictionary]: [returns return_payload with status code and related message]
     """
     email_link_is = os.environ['EMAIL_LINK_IS']
     # Retrieve input email
@@ -136,7 +136,6 @@ def lambda_handler(event, context):
 
             }
     # IF not present, return 200 OK with message, Please check your email for confirmation link.
-    # Invoke Amazon SES
     # Insert email into the database
     if s == False:
         table = resDb.Table('EmailSubscribe')
@@ -146,6 +145,7 @@ def lambda_handler(event, context):
         }
         table.put_item(Item=input)
         email_link = f'{email_link_is}?email={email_to_subscribe}'
+        # Invoke Amazon SESs
         _send_email(email_to_subscribe, email_link)
         return_payload = {
             'statusCode': 200,

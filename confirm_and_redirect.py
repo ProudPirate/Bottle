@@ -5,25 +5,26 @@ resDb = boto3.resource('dynamodb')
 
 
 def lambda_handler(event, context):
-    """[summary]
+    """[verify the user email and redirect the user to www.google.com]
 
     Args:
-        event ([type]): [description]
-        context ([type]): [description]
+        event ([dictionary]): [ ]
+        context ([__main__.LambdaContext]): [ ]
 
     Returns:
-        [type]: [description]
+        [dictionary]: [returns response with appropriate status code]
     """
-    # TODO implement
+    # get email from input
     email_to_confirm = event['queryStringParameters']
     email_to_confirm = email_to_confirm['email']
-    print(email_to_confirm)
+    # query input and update verified attribute to true
     table = resDb.Table('EmailSubscribe')
     input = {
         'email': email_to_confirm,
         'verified': 'true'
     }
     table.put_item(Item=input)
+    # return 302 redirect response
     response = {}
     response["statusCode"] = 302
     response["headers"] = {'Location': 'https://www.google.com'}
