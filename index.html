@@ -7,6 +7,7 @@
       integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
       crossorigin="anonymous"
     />
+    <!-- Custom styling -->
     <style>
       .center {
         margin: auto;
@@ -19,13 +20,15 @@
         font-weight: bold;
       }
     </style>
+    <!-- Import dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Javascript using ajax to hit AWS API -->
     <script type="text/javascript">
       $(document).ready(function () {
         $("#submit").click(function (e) {
           e.preventDefault();
 
-          var email = $("#email").val();
+          var email = $("#email").val(); //collect email from user
 
           $.ajax({
             type: "POST",
@@ -50,15 +53,18 @@
   <body class="bg-dark">
     <div class="card center bg-info">
       <div class="card-body">
+      <!-- Form to take email as input -->
         <form class="card-body align-items-center">
           <label for="email">Email</label>
           <input id="email" class="" />
           <button id="submit" class="btn btn-primary">Submit</button>
         </form>
+        <!-- To display response from AWS API -->
         <div id="form-response" class="text-white"></div>
       </div>
     </div>
   </body>
+  <!-- Import dependencies -->
   <script
     src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"
     integrity="sha384-5h4UG+6GOuV9qXh6HqOLwZMY4mnLPraeTrjT5v07o347pj6IkfuoASuGBhfDsp3d"
