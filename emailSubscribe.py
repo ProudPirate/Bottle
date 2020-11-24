@@ -36,7 +36,7 @@ def _send_email(email_to_subscribe, email_link):
     AWS_REGION = region
 
     # The subject line for the email.
-    SUBJECT = "Amazon SES Test (SDK for Python)"
+    SUBJECT = f"Subscription Confirmation for {email_to_subscribe}"
 
     # The email body for recipients with non-HTML email clients.
     BODY_TEXT = ("Amazon SES Test (Python)\r\n"
@@ -48,12 +48,12 @@ def _send_email(email_to_subscribe, email_link):
     BODY_HTML = f"""<html>
     <head></head>
     <body>
-      <h1>Amazon SES Test (SDK for Python)</h1>
+      <h3>Confirmation for Newsletter subscription: {email_to_subscribe}</h3>
       <p>This email was sent with
         <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-        <a href='https://aws.amazon.com/sdk-for-python/'>
-          AWS SDK for Python (Boto)</a>.</p>
-        <a href= {email_link}> Confirm </a>
+        <a href='https://aws.amazon.com/sdk-for-python/'>AWS SDK for Python (Boto)</a>.</p>
+        <p>Confirmation link <strong>{email_link}</strong></p>
+        <button href= {email_link}> Confirm </button>
     </body>
     </html>
                 """
