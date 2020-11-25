@@ -25,7 +25,9 @@ def _send_email(email_to_subscribe, email_link):
 
     # Replace recipient@example.com with a "To" address. If your account
     # is still in the sandbox, this address must be verified.
-    RECIPIENT = "shrestha.uts@gmail.com"
+    RECIPIENT_0 = "shrestha.uts@gmail.com"
+    RECIPIENT_1 = "bipal@bottle.com.np"
+    RECIPIENT_2 = "vivek@bottle.com.np"
 
     # Specify a configuration set. If you do not want to use a configuration
     # set, comment the following variable, and the
@@ -70,7 +72,9 @@ def _send_email(email_to_subscribe, email_link):
         response = client.send_email(
             Destination={
                 'ToAddresses': [
-                    RECIPIENT,
+                    RECIPIENT_0,
+                    RECIPIENT_1,
+                    RECIPIENT_2,
                 ],
             },
             Message={
