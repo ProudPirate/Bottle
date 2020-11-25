@@ -33,5 +33,7 @@ Also ensure that you have included proper docstrings and comments where applicab
 A technical design documentation draft of the approaches taken, problem statement breakdown, assumptions made, etc. would also be very helpful.
 
 #### Constraints
-- If your account is still in the sandbox, this address must be verified
+- If your account is still in the sandbox, email address must be verified
 - Thus, for the purpose of this assignment the email addresses have been hard coded
+
+#### Test page [https://proudpirate.github.io/Bottle/]
